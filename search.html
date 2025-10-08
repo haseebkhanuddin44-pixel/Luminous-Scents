@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Lumière Candles</title>
+    <meta name="description" content="Search results for premium handcrafted candles at Lumière Candles.">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        /* Search Page Improvements - Dark Theme */
+        body {
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+            color: #E5E5E5;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .search-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-bottom: 1px solid #333333;
+        }
+        
+        .search-header h1 {
+            color: #E5E5E5;
+            font-weight: 600;
+        }
+        
+        .search-filters {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            border-bottom: 1px solid #333333;
+        }
+        
+        .form-select {
+            background-color: #2a2a2a;
+            border-color: #333333;
+            color: #E5E5E5;
+        }
+        
+        .form-select:focus {
+            background-color: #2a2a2a;
+            border-color: #C9A464;
+            box-shadow: 0 0 0 0.25rem rgba(201, 164, 100, 0.25);
+            color: #E5E5E5;
+        }
+        
+        .form-select option {
+            background-color: #2a2a2a;
+            color: #E5E5E5;
+        }
+        
+        .btn-outline-secondary {
+            color: #B0B0B0;
+            border-color: #333333;
+            background-color: transparent;
+        }
+        
+        .btn-outline-secondary:hover {
+            background-color: #C9A464;
+            border-color: #C9A464;
+            color: #0d0d0d;
+        }
+        
+        .btn-outline-secondary.active {
+            background-color: #C9A464;
+            border-color: #C9A464;
+            color: #0d0d0d;
+        }
+        
+        #advancedFilters {
+            background-color: #2a2a2a;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border: 1px solid #333333;
+        }
+        
+        #advancedFilters h6 {
+            color: #E5E5E5;
+            font-weight: 600;
+        }
+        
+        .form-check-label {
+            color: #B0B0B0;
+        }
+        
+        .form-check-input {
+            background-color: #2a2a2a;
+            border-color: #333333;
+        }
+        
+        .form-check-input:checked {
+            background-color: #C9A464;
+            border-color: #C9A464;
+        }
+        
+        .form-check-input:focus {
+            border-color: #C9A464;
+            box-shadow: 0 0 0 0.25rem rgba(201, 164, 100, 0.25);
+        }
+        
+        .form-range {
+            background-color: transparent;
+        }
+        
+        .form-range::-webkit-slider-track {
+            background-color: #333333;
+        }
+        
+        .form-range::-webkit-slider-thumb {
+            background-color: #C9A464;
+        }
+        
+        .form-range::-moz-range-thumb {
+            background-color: #C9A464;
+            border: none;
+        }
+        
+        .form-range::-moz-range-track {
+            background-color: #333333;
+        }
+        
+        .search-results {
+            background: transparent;
+        }
+        
+        .product-card {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 4px 20px rgba(201, 164, 100, 0.3);
+            transform: translateY(-2px);
+            border-color: #C9A464;
+        }
+        
+        .product-card .card-title {
+            color: #E5E5E5;
+            font-weight: 600;
+        }
+        
+        .product-card .card-text {
+            color: #B0B0B0;
+        }
+        
+        .product-card .price {
+            color: #FFD700;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .rating-stars {
+            color: #FFD700;
+        }
+        
+        .no-results {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        
+        .no-results h3 {
+            color: #E5E5E5;
+        }
+        
+        .no-results .text-muted {
+            color: #B0B0B0 !important;
+        }
+        
+        .search-suggestions-section {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .search-suggestions-section h5 {
+            color: #E5E5E5;
+        }
+        
+        .suggestion-tag {
+            display: inline-block;
+            background-color: #2a2a2a;
+            color: #B0B0B0;
+            padding: 0.375rem 0.75rem;
+            margin: 0.25rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            border: 1px solid #333333;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion-tag:hover {
+            background-color: #C9A464;
+            color: #0d0d0d;
+            border-color: #C9A464;
+            text-decoration: none;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .view-toggle .btn {
+            padding: 0.375rem 0.75rem;
+        }
+        
+        .list-view .product-card {
+            margin-bottom: 1rem;
+        }
+        
+        .list-view .row {
+            align-items: center;
+        }
+        
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb-item a {
+            color: #C9A464;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: #B0B0B0;
+        }
+        
+        .text-muted {
+            color: #B0B0B0 !important;
+        }
+        
+        .lead {
+            color: #B0B0B0;
+        }
+        
+        /* Pagination styling */
+        .pagination .page-link {
+            background-color: #2a2a2a;
+            border-color: #333333;
+            color: #B0B0B0;
+        }
+        
+        .pagination .page-link:hover {
+            background-color: #C9A464;
+            border-color: #C9A464;
+            color: #0d0d0d;
+        }
+        
+        .pagination .page-item.active .page-link {
+            background-color: #C9A464;
+            border-color: #C9A464;
+            color: #0d0d0d;
+        }
+        
+        .pagination .page-item.disabled .page-link {
+            background-color: #1a1a1a;
+            border-color: #333333;
+            color: #666666;
+        }
+        
+        /* Button styling */
+        .btn-primary {
+            background-color: #C9A464;
+            border-color: #C9A464;
+            color: #0d0d0d;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FFD700;
+            border-color: #FFD700;
+            color: #0d0d0d;
+        }
+        
+        .btn-outline-primary {
+            color: #C9A464;
+            border-color: #C9A464;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #C9A464;
+            border-color: #C9A464;
+            color: #0d0d0d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="16" font-weight="600" fill="#EFC81D">Lumière</text>
+                    </svg>
+                </a>
+
+                <!-- Mobile menu button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="store-locator.html">Stores</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Bar -->
+                    <div class="search-container me-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search candles..." id="searchInput">
+                            <i class="bi bi-search search-icon"></i>
+                            <div class="search-suggestions" id="searchSuggestions"></div>
+                        </div>
+                    </div>
+
+                    <!-- Header Icons -->
+                    <div class="header-icons">
+                        <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Account">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a href="#" class="header-icon" id="wishlistIcon" aria-label="Wishlist">
+                            <i class="bi bi-heart"></i>
+                            <span class="icon-badge" id="wishlistCount">0</span>
+                        </a>
+                        <a href="#" class="header-icon" id="cartIcon" aria-label="Shopping Cart">
+                            <i class="bi bi-bag"></i>
+                            <span class="icon-badge" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Header -->
+        <section class="search-header py-5">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Search Results</li>
+                    </ol>
+                </nav>
+                
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="display-6 mb-2">Search Results</h1>
+                        <p class="lead text-muted mb-0" id="resultsCount">Loading results...</p>
+                        <div class="mt-2" id="searchQuery"></div>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <div class="view-toggle">
+                            <button class="btn btn-outline-secondary btn-sm active" id="gridView" title="Grid View">
+                                <i class="bi bi-grid"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" id="listView" title="List View">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Filters -->
+        <section class="search-filters py-4 border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center gap-3">
+                            <label for="sortBy" class="form-label mb-0 fw-medium">Sort by:</label>
+                            <select class="form-select form-select-sm" id="sortBy" style="width: auto;">
+                                <option value="relevance">Relevance</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Customer Rating</option>
+                                <option value="newest">Newest First</option>
+                                <option value="name">Name A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-md-end gap-2">
+                            <button class="btn btn-outline-secondary btn-sm" id="filterToggle">
+                                <i class="bi bi-funnel"></i> Filters
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" id="clearFilters">
+                                <i class="bi bi-x-circle"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Filters (Initially Hidden) -->
+                <div class="row mt-4 d-none" id="advancedFilters">
+                    <div class="col-md-3">
+                        <h6 class="fw-semibold mb-3">Price Range</h6>
+                        <div class="mb-2">
+                            <input type="range" class="form-range" id="priceRange" min="0" max="200" value="200">
+                            <div class="d-flex justify-content-between small text-muted">
+                                <span>$0</span>
+                                <span id="maxPrice">$200</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="fw-semibold mb-3">Fragrance Family</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Floral" id="fragranceFloral">
+                            <label class="form-check-label" for="fragranceFloral">Floral</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Woody" id="fragranceWoody">
+                            <label class="form-check-label" for="fragranceWoody">Woody</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Fresh" id="fragranceFresh">
+                            <label class="form-check-label" for="fragranceFresh">Fresh</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Gourmand" id="fragranceGourmand">
+                            <label class="form-check-label" for="fragranceGourmand">Gourmand</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="fw-semibold mb-3">Rating</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rating" value="4" id="rating4">
+                            <label class="form-check-label" for="rating4">4+ Stars</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rating" value="3" id="rating3">
+                            <label class="form-check-label" for="rating3">3+ Stars</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rating" value="0" id="ratingAll" checked>
+                            <label class="form-check-label" for="ratingAll">All Ratings</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="fw-semibold mb-3">Availability</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="inStock">
+                            <label class="form-check-label" for="inStock">In Stock Only</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Suggestions -->
+        <section class="search-suggestions-section" id="searchSuggestionsSection" style="display: none;">
+            <div class="container">
+                <h5 class="mb-3">Popular Searches</h5>
+                <div id="popularSearches">
+                    <a href="search.html?q=lavender" class="suggestion-tag">Lavender</a>
+                    <a href="search.html?q=vanilla" class="suggestion-tag">Vanilla</a>
+                    <a href="search.html?q=eucalyptus" class="suggestion-tag">Eucalyptus</a>
+                    <a href="search.html?q=citrus" class="suggestion-tag">Citrus</a>
+                    <a href="search.html?q=sandalwood" class="suggestion-tag">Sandalwood</a>
+                    <a href="search.html?q=rose" class="suggestion-tag">Rose</a>
+                    <a href="search.html?q=jasmine" class="suggestion-tag">Jasmine</a>
+                    <a href="search.html?q=pine" class="suggestion-tag">Pine</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results -->
+        <section class="search-results py-5">
+            <div class="container">
+                <div id="searchResults">
+                    <!-- Results will be populated by JavaScript -->
+                    <div class="text-center py-5">
+                        <div class="spinner-border" style="color: #B8935A;" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Searching for products...</p>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Search results pagination" id="paginationNav" style="display: none;">
+                    <ul class="pagination justify-content-center mt-4" id="pagination">
+                        <!-- Pagination will be populated by JavaScript -->
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Lumière Candles</h5>
+                    <p class="text-muted">Premium handcrafted candles made with natural soy wax and carefully curated fragrances.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Shop</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="shop.html" class="text-muted">All Candles</a></li>
+                        <li><a href="shop.html?category=new" class="text-muted">New Arrivals</a></li>
+                        <li><a href="shop.html?category=bestsellers" class="text-muted">Best Sellers</a></li>
+                        <li><a href="shop.html?category=gift-sets" class="text-muted">Gift Sets</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Contact Us</a></li>
+                        <li><a href="shipping-returns.html" class="text-muted">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-muted">Size Guide</a></li>
+                        <li><a href="#" class="text-muted">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted">About Us</a></li>
+                        <li><a href="store-locator.html" class="text-muted">Store Locator</a></li>
+                        <li><a href="#" class="text-muted">Careers</a></li>
+                        <li><a href="#" class="text-muted">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="privacy-policy.html" class="text-muted">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="text-muted">Terms of Service</a></li>
+                        <li><a href="accessibility.html" class="text-muted">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Lumière Candles. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=VISA" alt="Visa" class="me-2">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=MC" alt="Mastercard" class="me-2">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=AMEX" alt="American Express" class="me-2">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=PP" alt="PayPal">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h5>Shopping Cart</h5>
+            <button class="btn-close" id="closeCart" aria-label="Close cart"></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart text-center py-5">
+                <i class="bi bi-bag display-1 text-muted"></i>
+                <p class="mt-3">Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline-primary w-100 mb-2">View Cart</a>
+                <button class="btn btn-primary w-100" id="checkoutBtn" onclick="proceedToCheckout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="registerFirstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="registerLastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="terms-of-service.html">Terms of Service</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+
+    <script>
+        // Enhanced search results page functionality
+        let currentView = 'grid';
+        let currentPage = 1;
+        let itemsPerPage = 12;
+        let allResults = [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize search query display
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q') || '';
+            const searchQueryElement = document.getElementById('searchQuery');
+            
+            if (query && searchQueryElement) {
+                searchQueryElement.innerHTML = `<small class="text-muted">Searching for: <strong>"${query}"</strong></small>`;
+            }
+            
+            // Initialize view toggle
+            const gridViewBtn = document.getElementById('gridView');
+            const listViewBtn = document.getElementById('listView');
+            
+            if (gridViewBtn && listViewBtn) {
+                gridViewBtn.addEventListener('click', function() {
+                    setView('grid');
+                });
+                
+                listViewBtn.addEventListener('click', function() {
+                    setView('list');
+                });
+            }
+            
+            // Initialize filter toggle
+            const filterToggle = document.getElementById('filterToggle');
+            const advancedFilters = document.getElementById('advancedFilters');
+            
+            if (filterToggle && advancedFilters) {
+                filterToggle.addEventListener('click', function() {
+                    advancedFilters.classList.toggle('d-none');
+                    const icon = this.querySelector('i');
+                    if (advancedFilters.classList.contains('d-none')) {
+                        icon.className = 'bi bi-funnel';
+                    } else {
+                        icon.className = 'bi bi-funnel-fill';
+                    }
+                });
+            }
+
+            // Initialize price range display
+            const priceRange = document.getElementById('priceRange');
+            const maxPrice = document.getElementById('maxPrice');
+            
+            if (priceRange && maxPrice) {
+                priceRange.addEventListener('input', function() {
+                    maxPrice.textContent = '$' + this.value;
+                    applyFilters();
+                });
+            }
+
+            // Initialize sort functionality
+            const sortBy = document.getElementById('sortBy');
+            if (sortBy) {
+                sortBy.addEventListener('change', function() {
+                    applyFilters();
+                });
+            }
+
+            // Initialize filter inputs
+            document.querySelectorAll('#advancedFilters input').forEach(input => {
+                input.addEventListener('change', applyFilters);
+            });
+
+            // Initialize clear filters
+            const clearFilters = document.getElementById('clearFilters');
+            if (clearFilters) {
+                clearFilters.addEventListener('click', function() {
+                    // Reset all filter inputs
+                    document.querySelectorAll('#advancedFilters input').forEach(input => {
+                        if (input.type === 'checkbox') {
+                            input.checked = false;
+                        } else if (input.type === 'radio') {
+                            if (input.id === 'ratingAll') {
+                                input.checked = true;
+                            } else {
+                                input.checked = false;
+                            }
+                        } else if (input.type === 'range') {
+                            input.value = input.max;
+                            const event = new Event('input');
+                            input.dispatchEvent(event);
+                        }
+                    });
+                    
+                    // Reset sort
+                    const sortBy = document.getElementById('sortBy');
+                    if (sortBy) {
+                        sortBy.value = 'relevance';
+                    }
+                    
+                    applyFilters();
+                });
+            }
+            
+            // Show suggestions if no query
+            if (!query) {
+                const suggestionsSection = document.getElementById('searchSuggestionsSection');
+                if (suggestionsSection) {
+                    suggestionsSection.style.display = 'block';
+                }
+            }
+        });
+        
+        function setView(view) {
+            currentView = view;
+            const gridBtn = document.getElementById('gridView');
+            const listBtn = document.getElementById('listView');
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (view === 'grid') {
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
+                resultsContainer.classList.remove('list-view');
+            } else {
+                listBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+                resultsContainer.classList.add('list-view');
+            }
+            
+            // Re-render results with new view
+            displayCurrentPage();
+        }
+        
+        function applyFilters() {
+            if (!window.searchManager || !allResults.length) return;
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q') || '';
+            
+            // Get filter values
+            const filters = getFilterValues();
+            
+            // Apply filters
+            let filteredResults = window.searchManager.searchProducts(query, filters);
+            
+            // Apply sorting
+            const sortBy = document.getElementById('sortBy').value;
+            filteredResults = window.searchManager.sortResults(filteredResults, sortBy);
+            
+            allResults = filteredResults;
+            currentPage = 1;
+            displayCurrentPage();
+        }
+        
+        function getFilterValues() {
+            const filters = {};
+            
+            // Price range
+            const priceRange = document.getElementById('priceRange');
+            if (priceRange && priceRange.value < priceRange.max) {
+                filters.priceMax = parseFloat(priceRange.value);
+            }
+            
+            // Fragrance families
+            const fragrances = [];
+            document.querySelectorAll('input[type="checkbox"][value]').forEach(input => {
+                if (input.checked && ['Floral', 'Woody', 'Fresh', 'Gourmand'].includes(input.value)) {
+                    fragrances.push(input.value);
+                }
+            });
+            if (fragrances.length > 0) {
+                filters.fragrances = fragrances;
+            }
+            
+            // Rating
+            const ratingInputs = document.querySelectorAll('input[name="rating"]:checked');
+            if (ratingInputs.length > 0) {
+                const rating = parseFloat(ratingInputs[0].value);
+                if (rating > 0) {
+                    filters.rating = rating;
+                }
+            }
+            
+            // In stock
+            const inStock = document.getElementById('inStock');
+            if (inStock && inStock.checked) {
+                filters.inStock = true;
+            }
+            
+            return filters;
+        }
+        
+        function displayCurrentPage() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageResults = allResults.slice(startIndex, endIndex);
+            
+            displaySearchResults(pageResults, '', false);
+            updatePagination();
+        }
+        
+        function updatePagination() {
+            const totalPages = Math.ceil(allResults.length / itemsPerPage);
+            const paginationNav = document.getElementById('paginationNav');
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                paginationNav.style.display = 'none';
+                return;
+            }
+            
+            paginationNav.style.display = 'block';
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            paginationHTML += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="changePage(${currentPage - 1})" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        </li>
+                    `;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+            
+            // Next button
+            paginationHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="changePage(${currentPage + 1})" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+        }
+        
+        function changePage(page) {
+            const totalPages = Math.ceil(allResults.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                displayCurrentPage();
+                
+                // Scroll to top of results
+                document.getElementById('searchResults').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Override the displaySearchResults function to work with pagination
+        function displaySearchResults(results, query, updateAll = true) {
+            const resultsContainer = document.getElementById('searchResults');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            if (!resultsContainer) return;
+            
+            if (updateAll) {
+                allResults = results;
+                currentPage = 1;
+            }
+            
+            // Update results count
+            if (resultsCount) {
+                const countText = allResults.length === 1 ? '1 result' : `${allResults.length} results`;
+                resultsCount.textContent = query ? 
+                    `${countText} for "${query}"` : 
+                    `${countText} found`;
+            }
+            
+            // Hide suggestions when showing results
+            const suggestionsSection = document.getElementById('searchSuggestionsSection');
+            if (suggestionsSection && allResults.length > 0) {
+                suggestionsSection.style.display = 'none';
+            }
+            
+            // Display results
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="bi bi-search display-1 text-muted mb-3"></i>
+                        <h3 class="mb-3">No results found</h3>
+                        <p class="text-muted mb-4">Try adjusting your search terms or browse our categories.</p>
+                        <a href="shop.html" class="btn btn-primary">Browse All Products</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            let resultsHTML = currentView === 'grid' ? '<div class="row">' : '<div>';
+            
+            results.forEach(product => {
+                if (currentView === 'grid') {
+                    resultsHTML += `
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card product-card h-100">
+                                <div class="position-relative">
+                                    <img src="${product.images[0]}" class="card-img-top" alt="${product.title}" style="height: 250px; object-fit: cover;">
+                                    ${product.new_arrival ? '<span class="badge bg-success position-absolute top-0 start-0 m-2">New</span>' : ''}
+                                    ${product.featured ? '<span class="badge bg-warning position-absolute top-0 end-0 m-2">Popular</span>' : ''}
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title">${product.title}</h6>
+                                    <p class="card-text small flex-grow-1">${product.description.substring(0, 80)}...</p>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="price">$${product.price.toFixed(2)}</span>
+                                        <div class="rating-stars small">
+                                            ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
+                                        </div>
+                                    </div>
+                                    <a href="product.html?id=${product.id}" class="btn btn-outline-primary btn-sm">View Product</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultsHTML += `
+                        <div class="product-card mb-3">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-3">
+                                    <img src="${product.images[0]}" class="img-fluid rounded-start" alt="${product.title}" style="height: 150px; width: 100%; object-fit: cover;">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-8">
+                                                <h6 class="card-title mb-2">${product.title}</h6>
+                                                <p class="card-text text-muted small mb-2">${product.description.substring(0, 120)}...</p>
+                                                <div class="rating-stars small">
+                                                    ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-md-end">
+                                                <div class="price mb-2">$${product.price.toFixed(2)}</div>
+                                                <a href="product.html?id=${product.id}" class="btn btn-outline-primary btn-sm">View Product</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            resultsHTML += '</div>';
+            resultsContainer.innerHTML = resultsHTML;
+            
+            if (updateAll) {
+                updatePagination();
+            }
+        }
+    </script>
+</body>
+</html>

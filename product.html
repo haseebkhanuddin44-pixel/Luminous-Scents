@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="productTitle">Product - Lumière Candles</title>
+    <meta name="description" id="productDescription" content="Premium handcrafted candle details">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- JSON-LD Product Schema -->
+    <script type="application/ld+json" id="productSchema">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "",
+        "description": "",
+        "image": [],
+        "brand": {
+            "@type": "Brand",
+            "name": "Lumière Candles"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "",
+            "reviewCount": ""
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">Free shipping on orders over $75 | <a href="store-locator.html">Find a store near you</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#EFC81D">Lumière</text>
+                    </svg>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="shop.html" role="button" data-bs-toggle="dropdown">
+                                Shop
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="shop.html?category=candles">All Candles</a></li>
+                                <li><a class="dropdown-item" href="shop.html?category=new">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="shop.html?category=bestsellers">Best Sellers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=floral">Floral</a></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=woody">Woody</a></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=fresh">Fresh</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="store-locator.html">Stores</a>
+                        </li>
+                    </ul>
+
+                    <div class="search-container me-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search candles..." id="searchInput">
+                            <i class="bi bi-search search-icon"></i>
+                            <div class="search-suggestions" id="searchSuggestions"></div>
+                        </div>
+                    </div>
+
+                    <div class="header-icons">
+                        <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Account">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a href="#" class="header-icon" id="wishlistIcon" aria-label="Wishlist">
+                            <i class="bi bi-heart"></i>
+                            <span class="icon-badge" id="wishlistCount">0</span>
+                        </a>
+                        <a href="#" class="header-icon" id="cartIcon" aria-label="Shopping Cart">
+                            <i class="bi bi-bag"></i>
+                            <span class="icon-badge" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Breadcrumb -->
+        <section class="breadcrumb-section py-3 bg-light">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0" id="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+                        <li class="breadcrumb-item active">Loading...</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Product Details -->
+        <section class="product-details py-5">
+            <div class="container">
+                <div class="row" id="productContent">
+                    <!-- Content will be loaded by JavaScript -->
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3">Loading product details...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Information Tabs -->
+        <section class="product-info py-4 bg-light" id="productInfoSection" style="display: none;">
+            <div class="container">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab">
+                            Description
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients" type="button" role="tab">
+                            Ingredients
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care" type="button" role="tab">
+                            How to Use
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab">
+                            Shipping & Returns
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">
+                            Reviews
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content mt-4" id="productTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div id="productFullDescription">
+                                    <!-- Will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="ingredients" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h5>Ingredients</h5>
+                                <p>Our candles are made with premium natural soy wax, cotton wicks, and carefully selected fragrance oils.</p>
+                                <ul>
+                                    <li><strong>Wax:</strong> 100% Natural Soy Wax</li>
+                                    <li><strong>Wick:</strong> Cotton Core Wick</li>
+                                    <li><strong>Fragrance:</strong> Premium Fragrance Oils</li>
+                                    <li><strong>Container:</strong> Reusable Glass Vessel</li>
+                                </ul>
+                                <p class="text-muted">All ingredients are ethically sourced and eco-friendly.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="care" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h5>Candle Care Instructions</h5>
+                                <div class="care-instructions">
+                                    <div class="care-item mb-3">
+                                        <h6><i class="bi bi-1-circle text-primary me-2"></i>First Burn</h6>
+                                        <p>Allow candle to burn for 2-3 hours on first use to create an even wax pool.</p>
+                                    </div>
+                                    <div class="care-item mb-3">
+                                        <h6><i class="bi bi-2-circle text-primary me-2"></i>Trim the Wick</h6>
+                                        <p>Trim wick to 1/4" before each use to prevent smoking and ensure clean burning.</p>
+                                    </div>
+                                    <div class="care-item mb-3">
+                                        <h6><i class="bi bi-3-circle text-primary me-2"></i>Burn Time</h6>
+                                        <p>Do not burn for more than 4 hours at a time. Allow to cool before relighting.</p>
+                                    </div>
+                                    <div class="care-item mb-3">
+                                        <h6><i class="bi bi-4-circle text-primary me-2"></i>Safety</h6>
+                                        <p>Never leave a burning candle unattended. Keep away from children and pets.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="shipping" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5>Shipping Information</h5>
+                                <ul>
+                                    <li><strong>Free Shipping:</strong> Orders over $75</li>
+                                    <li><strong>Standard Shipping:</strong> 5-7 business days ($9.99)</li>
+                                    <li><strong>Express Shipping:</strong> 2-3 business days ($19.99)</li>
+                                    <li><strong>Next Day:</strong> 1 business day ($29.99)</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5>Returns & Exchanges</h5>
+                                <ul>
+                                    <li><strong>Return Window:</strong> 30 days from delivery</li>
+                                    <li><strong>Condition:</strong> Unused and in original packaging</li>
+                                    <li><strong>Process:</strong> Contact customer service for return label</li>
+                                    <li><strong>Refund:</strong> Processed within 5-7 business days</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <div id="reviewsContent">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products -->
+        <section class="related-products py-5" id="relatedProductsSection" style="display: none;">
+            <div class="container">
+                <h2 class="section-title text-center mb-5">You Might Also Like</h2>
+                <div class="row" id="relatedProducts">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="8" width="4" height="24" rx="2" fill="#F7F4F0"/>
+                            <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                            <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#F7F4F0">Lumière</text>
+                        </svg>
+                        <p class="mt-3">Premium handcrafted candles made with natural soy wax and carefully curated fragrances to illuminate your space.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Candles</a></li>
+                        <li><a href="shop.html?category=new">New Arrivals</a></li>
+                        <li><a href="shop.html?category=bestsellers">Best Sellers</a></li>
+                        <li><a href="shop.html?fragrance=floral">Floral</a></li>
+                        <li><a href="shop.html?fragrance=woody">Woody</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="store-locator.html">Store Locator</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Connect</h5>
+                    <div class="social-links mb-3">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                    </div>
+                    <div class="country-selector">
+                        <select class="form-select form-select-sm">
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>United Kingdom</option>
+                            <option>Australia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">&copy; 2024 Lumière Candles. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h5>Shopping Cart</h5>
+            <button class="btn-close" id="closeCart" aria-label="Close cart"></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart text-center py-5">
+                <i class="bi bi-bag display-1 text-muted"></i>
+                <p class="mt-3">Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline-primary w-100 mb-2">View Cart</a>
+                <button class="btn btn-primary w-100" id="checkoutBtn" onclick="proceedToCheckout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="registerFirstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="registerLastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="terms-of-service.html">Terms of Service</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div class="modal fade" id="imageZoomModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <img id="zoomedImage" src="" alt="" class="img-fluid w-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>

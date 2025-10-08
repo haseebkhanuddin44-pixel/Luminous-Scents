@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Lumière Candles</title>
+    <meta name="description" content="Review your selected items and proceed to checkout at Lumière Candles.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#EFC81D">Lumière</text>
+                    </svg>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="store-locator.html">Stores</a></li>
+                    </ul>
+
+                    <div class="search-container me-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search candles..." id="searchInput">
+                            <i class="bi bi-search search-icon"></i>
+                            <div class="search-suggestions" id="searchSuggestions"></div>
+                        </div>
+                    </div>
+
+                    <div class="header-icons">
+                        <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person"></i></a>
+                        <a href="#" class="header-icon" id="wishlistIcon"><i class="bi bi-heart"></i><span class="icon-badge" id="wishlistCount">0</span></a>
+                        <a href="#" class="header-icon" id="cartIcon"><i class="bi bi-bag"></i><span class="icon-badge" id="cartCount">0</span></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <section class="breadcrumb-section py-3 bg-light">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Cart Content -->
+        <section class="cart-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="section-title mb-4">Shopping Cart</h1>
+                    </div>
+                </div>
+
+                <div id="cartContent">
+                    <!-- Cart items will be loaded here by JavaScript -->
+                    <div id="emptyCart" class="text-center py-5">
+                        <i class="bi bi-bag display-1 text-muted"></i>
+                        <h3 class="mt-4">Your cart is empty</h3>
+                        <p class="text-muted mb-4">Looks like you haven't added any items to your cart yet.</p>
+                        <a href="shop.html" class="btn btn-primary btn-lg">Start Shopping</a>
+                    </div>
+
+                    <div id="cartItems" style="display: none;">
+                        <div class="row">
+                            <!-- Cart Items -->
+                            <div class="col-lg-8">
+                                <div class="cart-items-container">
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <h4>Items in your cart</h4>
+                                        <button class="btn btn-outline-secondary btn-sm" onclick="clearCart()">
+                                            <i class="bi bi-trash"></i> Clear Cart
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="cartItemsList">
+                                        <!-- Cart items will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Order Summary -->
+                            <div class="col-lg-4">
+                                <div class="order-summary">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Order Summary</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Subtotal:</span>
+                                                <span id="orderSubtotal">$0.00</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Shipping:</span>
+                                                <span id="orderShipping">$0.00</span>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Tax:</span>
+                                                <span id="orderTax">$0.00</span>
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <strong>Total:</strong>
+                                                <strong id="orderTotal">$0.00</strong>
+                                            </div>
+
+                                            <!-- Promo Code -->
+                                            <div class="promo-code mb-3">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="promoCode" placeholder="Promo code">
+                                                    <button class="btn btn-outline-secondary" type="button" onclick="applyPromoCode()">Apply</button>
+                                                </div>
+                                                <div id="promoMessage" class="form-text"></div>
+                                            </div>
+
+                                            <button class="btn btn-primary w-100 btn-lg" onclick="proceedToCheckout()">
+                                                Proceed to Checkout
+                                            </button>
+                                            
+                                            <div class="text-center mt-3">
+                                                <small class="text-muted">
+                                                    <i class="bi bi-shield-check"></i> Secure checkout
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Shipping Info -->
+                                    <div class="card mt-4">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-truck"></i> Shipping Information
+                                            </h6>
+                                            <p class="card-text small text-muted">
+                                                Free shipping on orders over $75. Standard delivery takes 3-5 business days.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continue Shopping -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="continue-shopping text-center">
+                            <a href="shop.html" class="btn btn-outline-primary">
+                                <i class="bi bi-arrow-left"></i> Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Products -->
+        <section class="recommended-products py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">You Might Also Like</h2>
+                        <p class="section-subtitle">Complete your collection with these popular items</p>
+                    </div>
+                </div>
+                <div class="row" id="recommendedProducts">
+                    <!-- Recommended products will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="8" width="4" height="24" rx="2" fill="#F7F4F0"/>
+                            <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                            <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#F7F4F0">Lumière</text>
+                        </svg>
+                        <p class="mt-3">Premium handcrafted candles made with natural soy wax and carefully curated fragrances to illuminate your space.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Candles</a></li>
+                        <li><a href="shop.html?category=new">New Arrivals</a></li>
+                        <li><a href="shop.html?category=bestsellers">Best Sellers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="store-locator.html">Store Locator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Connect</h5>
+                    <div class="social-links mb-3">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">&copy; 2024 Lumière Candles. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    
+    <script>
+        // Initialize cart page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartPage();
+            loadRecommendedProducts();
+        });
+
+        function loadCartPage() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContent = document.getElementById('cartContent');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartItems = document.getElementById('cartItems');
+
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                cartItems.style.display = 'none';
+            } else {
+                emptyCart.style.display = 'none';
+                cartItems.style.display = 'block';
+                renderCartItems(cart);
+                updateOrderSummary(cart);
+            }
+        }
+
+        function renderCartItems(cart) {
+            const cartItemsList = document.getElementById('cartItemsList');
+            cartItemsList.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const cartItemHTML = `
+                    <div class="cart-item-row border-bottom py-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <img src="${item.image}" alt="${item.name}" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-4">
+                                <h5 class="mb-1">${item.name}</h5>
+                                <p class="text-muted mb-1">${item.variant || 'Standard'}</p>
+                                <small class="text-muted">SKU: ${item.id}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="quantity-control d-flex align-items-center">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
+                                    <input type="number" class="form-control mx-2 text-center" style="width: 60px;" value="${item.quantity}" onchange="updateQuantity(${index}, this.value)">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <strong>$${(item.price * item.quantity).toFixed(2)}</strong>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button class="btn btn-outline-danger btn-sm" onclick="removeFromCart(${index})">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cartItemsList.innerHTML += cartItemHTML;
+            });
+        }
+
+        function updateQuantity(index, newQuantity) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (newQuantity <= 0) {
+                removeFromCart(index);
+                return;
+            }
+            cart[index].quantity = parseInt(newQuantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartPage();
+            updateCartCount();
+        }
+
+        function removeFromCart(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCartPage();
+            updateCartCount();
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your cart?')) {
+                localStorage.removeItem('cart');
+                loadCartPage();
+                updateCartCount();
+            }
+        }
+
+        function updateOrderSummary(cart) {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 75 ? 0 : 9.99;
+            const tax = subtotal * 0.08;
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('orderSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('orderShipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+            document.getElementById('orderTax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('orderTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function applyPromoCode() {
+            const promoCode = document.getElementById('promoCode').value.trim();
+            const promoMessage = document.getElementById('promoMessage');
+            
+            // Simple promo code validation (in real app, this would be server-side)
+            const validCodes = {
+                'FREESHIP75': { type: 'shipping', discount: 'free_shipping', minOrder: 75 },
+                'SAVE10': { type: 'percentage', discount: 10, minOrder: 0 },
+                'WELCOME20': { type: 'percentage', discount: 20, minOrder: 50 }
+            };
+
+            if (validCodes[promoCode.toUpperCase()]) {
+                promoMessage.textContent = 'Promo code applied successfully!';
+                promoMessage.className = 'form-text text-success';
+                localStorage.setItem('promoCode', promoCode.toUpperCase());
+                loadCartPage(); // Refresh to apply discount
+            } else {
+                promoMessage.textContent = 'Invalid promo code.';
+                promoMessage.className = 'form-text text-danger';
+            }
+        }
+
+        function proceedToCheckout() {
+            // Check if cart has items
+            if (cartManager.getItemCount() === 0) {
+                alert('Your cart is empty. Please add some items before proceeding to checkout.');
+                return;
+            }
+            
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        }
+
+        function loadRecommendedProducts() {
+            // Load a few random products as recommendations
+            fetch('data/products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const shuffled = products.sort(() => 0.5 - Math.random());
+                    const recommended = shuffled.slice(0, 4);
+                    renderRecommendedProducts(recommended);
+                })
+                .catch(error => console.error('Error loading recommended products:', error));
+        }
+
+        function renderRecommendedProducts(products) {
+            const container = document.getElementById('recommendedProducts');
+            container.innerHTML = '';
+
+            products.forEach(product => {
+                const productHTML = `
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="${product.image}" alt="${product.name}" class="img-fluid">
+                                <div class="product-actions">
+                                    <button class="product-action" onclick="addToWishlist('${product.id}')" title="Add to Wishlist">
+                                        <i class="bi bi-heart"></i>
+                                    </button>
+                                    <button class="product-action" onclick="quickView('${product.id}')" title="Quick View">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h5 class="product-title">${product.name}</h5>
+                                <p class="product-description">${product.description}</p>
+                                <div class="product-price">
+                                    <span class="price-current">$${product.price}</span>
+                                </div>
+                                <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += productHTML;
+            });
+        }
+    </script>
+</body>
+</html>

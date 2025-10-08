@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Lumière Candles</title>
+    <meta name="description" content="Learn about Lumière Candles - our story, values, and commitment to creating premium handcrafted candles.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">Free shipping on orders over $75 | <a href="store-locator.html">Find a store near you</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#EFC81D">Lumière</text>
+                    </svg>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="shop.html" role="button" data-bs-toggle="dropdown">
+                                Shop
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="shop.html?category=candles">All Candles</a></li>
+                                <li><a class="dropdown-item" href="shop.html?category=new">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="shop.html?category=bestsellers">Best Sellers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=floral">Floral</a></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=woody">Woody</a></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=fresh">Fresh</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="store-locator.html">Stores</a>
+                        </li>
+                    </ul>
+
+                    <div class="search-container me-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search candles..." id="searchInput">
+                            <i class="bi bi-search search-icon"></i>
+                            <div class="search-suggestions" id="searchSuggestions"></div>
+                        </div>
+                    </div>
+
+                    <div class="header-icons">
+                        <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Account">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a href="#" class="header-icon" id="wishlistIcon" aria-label="Wishlist">
+                            <i class="bi bi-heart"></i>
+                            <span class="icon-badge" id="wishlistCount">0</span>
+                        </a>
+                        <a href="#" class="header-icon" id="cartIcon" aria-label="Shopping Cart">
+                            <i class="bi bi-bag"></i>
+                            <span class="icon-badge" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="about-hero py-5" style="background: linear-gradient(rgba(107, 63, 38, 0.8), rgba(107, 63, 38, 0.8)), url('https://t4.ftcdn.net/jpg/10/30/20/75/360_F_1030207509_Hwggg3WJec5QMEJEB6b8OkYjUYIdYSVb.jpg') center/cover;">
+            <div class="container">
+                <div class="row justify-content-center text-center text-white">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 mb-4">Our Story</h1>
+                        <p class="lead">Crafting moments of tranquility and beauty through the art of premium candle making</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4">
+                        <h2 class="section-title">The Lumière Story</h2>
+                        <p>Founded in 2018, Lumière Candles began as a passion project in a small studio apartment. Our founder, inspired by the transformative power of scent and light, set out to create candles that would elevate everyday moments into extraordinary experiences.</p>
+                        <p>What started with a simple desire to fill spaces with beautiful fragrance has grown into a commitment to sustainable luxury. Every candle we create tells a story of craftsmanship, quality, and care for both our customers and our planet.</p>
+                        <p>Today, Lumière Candles is proud to be a certified B-Corporation, balancing profit with purpose as we continue to illuminate homes and hearts around the world.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&h=400&fit=crop" alt="Candle making process" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title" style="color: black;">Our Values</h2>
+                        <p class="section-subtitle" style="color: black;">The principles that guide everything we do</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="value-card text-center p-4">
+                            <i class="bi bi-leaf display-4 text-primary mb-3"></i>
+                            <h4>Sustainability</h4>
+                            <p>We use only natural, renewable soy wax and sustainable packaging materials. Our commitment to the environment is reflected in every aspect of our business.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="value-card text-center p-4">
+                            <i class="bi bi-heart display-4 text-primary mb-3"></i>
+                            <h4>Quality</h4>
+                            <p>Each candle is hand-poured with meticulous attention to detail. We source the finest fragrance oils and materials to ensure every product meets our exacting standards.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="value-card text-center p-4">
+                            <i class="bi bi-people display-4 text-primary mb-3"></i>
+                            <h4>Community</h4>
+                            <p>We believe in supporting local artisans and giving back to our community. A portion of every purchase supports local environmental initiatives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">Our Process</h2>
+                        <p class="section-subtitle">From concept to your home</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="process-step text-center">
+                            <div class="step-number">1</div>
+                            <h5>Fragrance Development</h5>
+                            <p>Our perfumers carefully blend premium oils to create unique, memorable scents.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="process-step text-center">
+                            <div class="step-number">2</div>
+                            <h5>Hand Pouring</h5>
+                            <p>Each candle is individually hand-poured using natural soy wax and cotton wicks.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="process-step text-center">
+                            <div class="step-number">3</div>
+                            <h5>Quality Testing</h5>
+                            <p>Every batch undergoes rigorous testing for burn quality, scent throw, and safety.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="process-step text-center">
+                            <div class="step-number">4</div>
+                            <h5>Sustainable Packaging</h5>
+                            <p>Carefully packaged in recyclable materials and shipped carbon-neutral to your door.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title" style="color: black;">Meet Our Team</h2>
+                        <p class="section-subtitle" style="color: black;">The passionate people behind Lumière</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="team-member text-center">
+                            <img src="img/Haseeb.png" alt="Sarah Johnson" class="rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
+                            <h5 style="color: black;">Haseeb Khan</h5>
+                            <p class="text-muted" style="color: black;">Founder & CEO</p>
+                            <p style="color: black;">Haseeb's passion for fragrance and sustainable business practices drives Lumière's mission to create beautiful, eco-friendly candles.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="team-member text-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" alt="Michael Chen" class="rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
+                            <h5 style="color: black;">Michael Chen</h5>
+                            <p class="text-muted" style="color: black;">Master Perfumer</p>
+                            <p style="color: black;">With over 15 years of experience, Michael creates the signature scents that make each Lumière candle unique and memorable.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="team-member text-center">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face" alt="Emma Rodriguez" class="rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover;">
+                            <h5 style="color: black;">Emma Rodriguez</h5>
+                            <p class="text-muted" style="color: black;">Head of Sustainability</p>
+                            <p style="color: black;">Emma ensures that every aspect of our business aligns with our commitment to environmental responsibility and ethical practices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="8" width="4" height="24" rx="2" fill="#F7F4F0"/>
+                            <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                            <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#F7F4F0">Lumière</text>
+                        </svg>
+                        <p class="mt-3">Premium handcrafted candles made with natural soy wax and carefully curated fragrances to illuminate your space.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Candles</a></li>
+                        <li><a href="shop.html?category=new">New Arrivals</a></li>
+                        <li><a href="shop.html?category=bestsellers">Best Sellers</a></li>
+                        <li><a href="shop.html?fragrance=floral">Floral</a></li>
+                        <li><a href="shop.html?fragrance=woody">Woody</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="store-locator.html">Store Locator</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Connect</h5>
+                    <div class="social-links mb-3">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                    </div>
+                    <div class="country-selector">
+                        <select class="form-select form-select-sm">
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>United Kingdom</option>
+                            <option>Australia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">&copy; 2024 Lumière Candles. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h5>Shopping Cart</h5>
+            <button class="btn-close" id="closeCart" aria-label="Close cart"></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart text-center py-5">
+                <i class="bi bi-bag display-1 text-muted"></i>
+                <p class="mt-3">Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline-primary w-100 mb-2">View Cart</a>
+                <button class="btn btn-primary w-100" id="checkoutBtn" onclick="proceedToCheckout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="registerFirstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="registerLastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="terms-of-service.html">Terms of Service</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

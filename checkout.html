@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Lumière Candles</title>
+    <meta name="description" content="Complete your order of premium handcrafted candles at Lumière Candles.">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        .checkout-step {
+            padding: 1.5rem;
+            border: 2px solid #dee2e6;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+        }
+        
+        .checkout-step.active {
+            border-color: #B8935A;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(184, 147, 90, 0.15);
+        }
+        
+        .checkout-step.completed {
+            border-color: #28a745;
+            background-color: #ffffff;
+        }
+        
+        .checkout-step h4 {
+            color: #2c1810;
+            font-weight: 600;
+        }
+        
+        .step-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+            color: white;
+        }
+        
+        .checkout-step.active .step-number {
+            background-color: #B8935A;
+            color: white;
+        }
+        
+        .checkout-step.completed .step-number {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .order-summary {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            position: sticky;
+            top: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-summary h5 {
+            color: #2c1810;
+            font-weight: 600;
+        }
+        
+        .payment-method {
+            border: 2px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            background-color: #ffffff;
+            color: #2c1810;
+        }
+        
+        .payment-method:hover {
+            border-color: #B8935A;
+            background-color: #fafafa;
+        }
+        
+        .payment-method.selected {
+            border-color: #B8935A;
+            background-color: #fff8f0;
+            box-shadow: 0 2px 8px rgba(184, 147, 90, 0.15);
+        }
+        
+        .form-floating > .form-control {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            color: #2c1810;
+        }
+        
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: #B8935A;
+        }
+        
+        .form-floating > .form-control:focus {
+            border-color: #B8935A;
+            box-shadow: 0 0 0 0.25rem rgba(184, 147, 90, 0.25);
+            background-color: #ffffff;
+        }
+        
+        .form-floating > label {
+            color: #6c757d;
+        }
+        
+        .form-select {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            color: #2c1810;
+        }
+        
+        .form-select:focus {
+            border-color: #B8935A;
+            box-shadow: 0 0 0 0.25rem rgba(184, 147, 90, 0.25);
+        }
+        
+        .form-check-label {
+            color: #495057;
+        }
+        
+        .security-badges {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        .progress-bar-custom {
+            background-color: #C9A464;
+        }
+        
+        .order-item {
+            border-bottom: 1px solid #dee2e6;
+            padding: 1rem 0;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-item h6 {
+            color: #2c1810;
+            font-weight: 600;
+        }
+        
+        .order-totals {
+            color: #2c1810;
+        }
+        
+        .order-totals .fw-bold {
+            color: #2c1810;
+        }
+        
+        .btn-checkout {
+            background: linear-gradient(135deg, #C9A464 0%, #B8935A 100%);
+            border: none;
+            color: white;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #B8935A 0%, #A68450 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 164, 100, 0.3);
+        }
+        
+        .btn-checkout:disabled {
+            background: #6c757d;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Additional text contrast improvements */
+        body {
+            color: #2c1810;
+        }
+        
+        .text-muted {
+            color: #6c757d !important;
+        }
+        
+        .small {
+            color: #6c757d;
+        }
+        
+        .fw-semibold, .fw-bold {
+            color: #2c1810;
+        }
+        
+        .container {
+            background-color: transparent;
+        }
+        
+        .row {
+            background-color: transparent;
+        }
+        
+        .invalid-feedback {
+            color: #dc3545;
+            font-weight: 500;
+        }
+        
+        .form-check-input:checked {
+            background-color: #B8935A;
+            border-color: #B8935A;
+        }
+        
+        .form-check-input:focus {
+            border-color: #B8935A;
+            box-shadow: 0 0 0 0.25rem rgba(184, 147, 90, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="16" font-weight="600" fill="#2C1810">Lumière</text>
+                    </svg>
+                </a>
+
+                <!-- Checkout Progress -->
+                <div class="d-none d-md-flex align-items-center">
+                    <div class="d-flex align-items-center">
+                        <span class="text-muted me-2">Cart</span>
+                        <i class="bi bi-chevron-right text-muted me-2"></i>
+                        <span class="fw-semibold text-primary">Checkout</span>
+                        <i class="bi bi-chevron-right text-muted ms-2 me-2"></i>
+                        <span class="text-muted">Confirmation</span>
+                    </div>
+                </div>
+
+                <!-- Secure Checkout Badge -->
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-shield-check text-success me-2"></i>
+                    <span class="small text-muted">Secure Checkout</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content py-5" style="background-color: #fafafa; min-height: 100vh;">
+        <div class="container">
+            <!-- Progress Bar -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="progress" style="height: 4px;">
+                        <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Checkout Form -->
+                <div class="col-lg-8">
+                    <form id="checkoutForm" novalidate>
+                        <!-- Step 1: Contact Information -->
+                        <div class="checkout-step active" id="contactStep">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="step-number">1</div>
+                                <h4 class="mb-0">Contact Information</h4>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                        <label for="email">Email Address *</label>
+                                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Subscribe to our newsletter for exclusive offers and updates
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Shipping Address -->
+                        <div class="checkout-step" id="shippingStep">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="step-number">2</div>
+                                <h4 class="mb-0">Shipping Address</h4>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                        <label for="firstName">First Name *</label>
+                                        <div class="invalid-feedback">Please provide your first name.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                        <label for="lastName">Last Name *</label>
+                                        <div class="invalid-feedback">Please provide your last name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+                                    <label for="address">Street Address *</label>
+                                    <div class="invalid-feedback">Please provide your address.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="apartment" name="apartment" placeholder="Apartment">
+                                    <label for="apartment">Apartment, suite, etc. (optional)</label>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                                        <label for="city">City *</label>
+                                        <div class="invalid-feedback">Please provide your city.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="state" name="state" required>
+                                            <option value="">Choose...</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                        <label for="state">State *</label>
+                                        <div class="invalid-feedback">Please select your state.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Zip Code" required>
+                                        <label for="zipCode">Zip Code *</label>
+                                        <div class="invalid-feedback">Please provide your zip code.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="saveAddress" name="saveAddress">
+                                <label class="form-check-label" for="saveAddress">
+                                    Save this address for future orders
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Shipping Method -->
+                        <div class="checkout-step" id="shippingMethodStep">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="step-number">3</div>
+                                <h4 class="mb-0">Shipping Method</h4>
+                            </div>
+                            
+                            <div class="shipping-methods">
+                                <div class="payment-method" data-shipping="standard">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input me-3" type="radio" name="shippingMethod" id="standardShipping" value="standard" checked>
+                                            <div>
+                                                <h6 class="mb-1">Standard Shipping</h6>
+                                                <small class="text-muted">5-7 business days</small>
+                                            </div>
+                                        </div>
+                                        <span class="fw-semibold" id="standardPrice">$9.99</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method" data-shipping="express">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input me-3" type="radio" name="shippingMethod" id="expressShipping" value="express">
+                                            <div>
+                                                <h6 class="mb-1">Express Shipping</h6>
+                                                <small class="text-muted">2-3 business days</small>
+                                            </div>
+                                        </div>
+                                        <span class="fw-semibold">$19.99</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method" data-shipping="overnight">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input me-3" type="radio" name="shippingMethod" id="overnightShipping" value="overnight">
+                                            <div>
+                                                <h6 class="mb-1">Overnight Shipping</h6>
+                                                <small class="text-muted">Next business day</small>
+                                            </div>
+                                        </div>
+                                        <span class="fw-semibold">$29.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Payment Method -->
+                        <div class="checkout-step" id="paymentStep">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="step-number">4</div>
+                                <h4 class="mb-0">Payment Method</h4>
+                            </div>
+                            
+                            <div class="payment-methods mb-4">
+                                <div class="payment-method selected" data-payment="card">
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-check-input me-3" type="radio" name="paymentMethod" id="creditCard" value="card" checked>
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-credit-card me-2"></i>
+                                            <span>Credit / Debit Card</span>
+                                        </div>
+                                        <div class="ms-auto d-flex gap-2">
+                                            <img src="https://via.placeholder.com/30x20/333/fff?text=VISA" alt="Visa">
+                                            <img src="https://via.placeholder.com/30x20/333/fff?text=MC" alt="Mastercard">
+                                            <img src="https://via.placeholder.com/30x20/333/fff?text=AMEX" alt="American Express">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method" data-payment="paypal">
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-check-input me-3" type="radio" name="paymentMethod" id="paypal" value="paypal">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-paypal me-2 text-primary"></i>
+                                            <span>PayPal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-method" data-payment="apple">
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-check-input me-3" type="radio" name="paymentMethod" id="applePay" value="apple">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-apple me-2"></i>
+                                            <span>Apple Pay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Credit Card Form -->
+                            <div id="cardForm">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Card Number" required>
+                                            <label for="cardNumber">Card Number *</label>
+                                            <div class="invalid-feedback">Please provide a valid card number.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Name on Card" required>
+                                            <label for="cardName">Name on Card *</label>
+                                            <div class="invalid-feedback">Please provide the name on the card.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                                            <label for="expiryDate">Expiry Date *</label>
+                                            <div class="invalid-feedback">Please provide the expiry date.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" maxlength="4" required>
+                                            <label for="cvv">CVV *</label>
+                                            <div class="invalid-feedback">Please provide the CVV.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="billingAddress" name="billingAddress" checked>
+                                <label class="form-check-label" for="billingAddress">
+                                    Billing address same as shipping address
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="cart.html" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Return to Cart
+                            </a>
+                            <button type="submit" class="btn btn-checkout" id="placeOrderBtn">
+                                <span class="spinner-border spinner-border-sm me-2 d-none" id="orderSpinner"></span>
+                                Place Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="order-summary">
+                        <h5 class="mb-4">Order Summary</h5>
+                        
+                        <!-- Order Items -->
+                        <div id="orderItems" class="mb-4">
+                            <!-- Items will be populated by JavaScript -->
+                        </div>
+                        
+                        <!-- Promo Code -->
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="promoCode" placeholder="Promo code">
+                                <button class="btn btn-outline-secondary" type="button" id="applyPromo">Apply</button>
+                            </div>
+                            <div id="promoMessage" class="small mt-2"></div>
+                        </div>
+                        
+                        <!-- Order Totals -->
+                        <div class="order-totals">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="subtotalAmount">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2" id="discountRow" style="display: none !important;">
+                                <span>Discount:</span>
+                                <span class="text-success" id="discountAmount">-$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Shipping:</span>
+                                <span id="shippingAmount">$9.99</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Tax:</span>
+                                <span id="taxAmount">$0.00</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold h5">
+                                <span>Total:</span>
+                                <span id="totalAmount">$0.00</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Badges -->
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <i class="bi bi-shield-check"></i>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="bi bi-lock"></i>
+                                <span>256-bit Encryption</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Money Back Guarantee -->
+                        <div class="text-center mt-3 p-3" style="background-color: #e8f5e8; border-radius: 0.5rem;">
+                            <i class="bi bi-check-circle text-success mb-2"></i>
+                            <div class="small">
+                                <strong>30-Day Money Back Guarantee</strong><br>
+                                <span class="text-muted">Not satisfied? Get your money back.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

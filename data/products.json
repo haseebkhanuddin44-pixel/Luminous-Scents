@@ -1,0 +1,85 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Autumn Spice",
+      "slug": "autumn-spice",
+      "description": "A warm blend of cinnamon, nutmeg, and vanilla that captures the essence of fall.",
+      "price": 32.00,
+      "compare_at_price": null,
+      "rating": 4.8,
+      "review_count": 127,
+      "images": [
+        "https://yankeecandle.imgix.net/9aed2c71-1b87-3089-bcdd-8aab41698fd4/9aed2c71-1b87-3089-bcdd-8aab41698fd4.tif?auto=format,compress&w=1188",
+        "https://yankeecandle.imgix.net/9aed2c71-1b87-3089-bcdd-8aab41698fd4/9aed2c71-1b87-3089-bcdd-8aab41698fd4.tif?auto=format,compress&w=1188",
+        "https://yankeecandle.imgix.net/9aed2c71-1b87-3089-bcdd-8aab41698fd4/9aed2c71-1b87-3089-bcdd-8aab41698fd4.tif?auto=format,compress&w=1188"
+      ],
+      "tags": ["bestseller", "seasonal", "warm"],
+      "category": "candles",
+      "fragrance_family": "woody",
+      "fragrance_notes": ["Cinnamon", "Nutmeg", "Vanilla", "Clove"],
+      "size_options": [
+        {"size": "Small (6 oz)", "price": 32.00, "burn_time": "35-40 hours"},
+        {"size": "Medium (10 oz)", "price": 48.00, "burn_time": "60-65 hours"},
+        {"size": "Large (16 oz)", "price": 68.00, "burn_time": "90-95 hours"}
+      ],
+      "stock": 45,
+      "featured": true,
+      "new_arrival": false
+    },
+    {
+      "id": 2,
+      "title": "Ocean Breeze",
+      "slug": "ocean-breeze",
+      "description": "Fresh and invigorating scent reminiscent of coastal mornings with sea salt and driftwood.",
+      "price": 36.00,
+      "compare_at_price": 42.00,
+      "rating": 4.6,
+      "review_count": 89,
+      "images": [
+        "https://yankeecandle.imgix.net/9d926164-e036-3ff9-b29f-4e6b1b375ff7/9d926164-e036-3ff9-b29f-4e6b1b375ff7.jpeg?auto=format,compress&w=1188",
+        "https://yankeecandle.imgix.net/9d926164-e036-3ff9-b29f-4e6b1b375ff7/9d926164-e036-3ff9-b29f-4e6b1b375ff7.jpeg?auto=format,compress&w=1188",
+        "https://yankeecandle.imgix.net/9d926164-e036-3ff9-b29f-4e6b1b375ff7/9d926164-e036-3ff9-b29f-4e6b1b375ff7.jpeg?auto=format,compress&w=1188"
+      ],
+      "tags": ["fresh", "summer", "coastal"],
+      "category": "candles",
+      "fragrance_family": "fresh",
+      "fragrance_notes": ["Sea Salt", "Driftwood", "Ocean Mist", "White Tea"],
+      "size_options": [
+        {"size": "Small (6 oz)", "price": 36.00, "burn_time": "35-40 hours"},
+        {"size": "Medium (10 oz)", "price": 52.00, "burn_time": "60-65 hours"},
+        {"size": "Large (16 oz)", "price": 72.00, "burn_time": "90-95 hours"}
+      ],
+      "stock": 23,
+      "featured": true,
+      "new_arrival": false
+    },
+    {
+      "id": 3,
+      "title": "Lavender Dreams",
+      "slug": "lavender-dreams",
+      "description": "Calming lavender with hints of chamomile and soft musk for ultimate relaxation.",
+      "price": 34.00,
+      "compare_at_price": null,
+      "rating": 4.9,
+      "review_count": 203,
+      "images": [
+        "https://yankeecandle.imgix.net/5b44d9d8-2f9f-3e99-b068-910a201c930a/5b44d9d8-2f9f-3e99-b068-910a201c930a.tif?auto=format,compress&w=1188",
+        "https://yankeecandle.imgix.net/5b44d9d8-2f9f-3e99-b068-910a201c930a/5b44d9d8-2f9f-3e99-b068-910a201c930a.tif?auto=format,compress&w=1188",
+        "https://yankeecandle.imgix.net/5b44d9d8-2f9f-3e99-b068-910a201c930a/5b44d9d8-2f9f-3e99-b068-910a201c930a.tif?auto=format,compress&w=1188"
+      ],
+      "tags": ["bestseller", "relaxing", "floral"],
+      "category": "candles",
+      "fragrance_family": "floral",
+      "fragrance_notes": ["French Lavender", "Chamomile", "Soft Musk", "Bergamot"],
+      "size_options": [
+        {"size": "Small (6 oz)", "price": 34.00, "burn_time": "35-40 hours"},
+        {"size": "Medium (10 oz)", "price": 50.00, "burn_time": "60-65 hours"},
+        {"size": "Large (16 oz)", "price": 70.00, "burn_time": "90-95 hours"}
+      ],
+      "stock": 67,
+      "featured": true,
+      "new_arrival": false
+    }
+  ]
+}

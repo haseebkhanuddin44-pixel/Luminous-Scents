@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière Candles - Premium Handcrafted Candles</title>
+    <meta name="description" content="Discover our collection of premium handcrafted candles made with natural soy wax and carefully curated fragrances.">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Lumière Candles",
+        "url": "https://lumierecandles.com",
+        "description": "Premium handcrafted candles made with natural soy wax",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lumierecandles.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Premium Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-background">
+            <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="luxury-pattern"></div>
+        </div>
+        
+        <div class="preloader-content">
+            <div class="premium-frame">
+                <div class="frame-corner top-left"></div>
+                <div class="frame-corner top-right"></div>
+                <div class="frame-corner bottom-left"></div>
+                <div class="frame-corner bottom-right"></div>
+            </div>
+            
+            <div class="candle-scene">
+                <div class="candle-glow"></div>
+                <div class="candle">
+                    <div class="flame">
+                        <div class="flame-inner"></div>
+                        <div class="flame-core"></div>
+                    </div>
+                    <div class="wick"></div>
+                    <div class="wax">
+                        <div class="wax-drip"></div>
+                    </div>
+                    <div class="candle-base">
+                        <div class="base-reflection"></div>
+                    </div>
+                </div>
+                <div class="candle-shadow"></div>
+            </div>
+            
+            <div class="brand-showcase">
+                <div class="brand-ornament top"></div>
+                <div class="brand-logo">
+                    <svg width="180" height="60" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="candleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#C9A464;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge> 
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <rect x="18" y="12" width="6" height="36" rx="3" fill="url(#candleGradient)" filter="url(#glow)"/>
+                        <ellipse cx="21" cy="8" rx="5" ry="3" fill="#FFD700" filter="url(#glow)"/>
+                        <text x="40" y="38" font-family="Playfair Display" font-size="28" font-weight="700" fill="#6B3F26" filter="url(#glow)">Lumière</text>
+                    </svg>
+                </div>
+                <div class="brand-ornament bottom"></div>
+            </div>
+            
+            <div class="luxury-text">
+                <div class="tagline">Premium Handcrafted Candles</div>
+                <div class="loading-message">
+                    <span class="loading-word">Crafting</span>
+                    <span class="loading-word">Your</span>
+                    <span class="loading-word">Luxury</span>
+                    <span class="loading-word">Experience</span>
+                </div>
+            </div>
+            
+            <div class="elegant-progress">
+                <div class="progress-container">
+                    <div class="progress-track"></div>
+                    <div class="progress-fill"></div>
+                    <div class="progress-glow"></div>
+                </div>
+                <div class="progress-percentage">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-9">
+                    <p class="mb-0">We use cookies to enhance your browsing experience and analyze our traffic. By continuing to use our site, you consent to our use of cookies.</p>
+                </div>
+                <div class="col-md-3 text-end">
+                    <button class="btn btn-outline-light btn-sm me-2" onclick="dismissCookies()">Dismiss</button>
+                    <button class="btn btn-light btn-sm" onclick="acceptCookies()">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">Free shipping on orders over $75 | <a href="store-locator.html">Find a store near you</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#EFC81D">Lumière</text>
+                    </svg>
+                </a>
+
+                <!-- Mobile menu button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="shop.html" role="button" data-bs-toggle="dropdown">
+                                Shop
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="shop.html?category=candles">All Candles</a></li>
+                                <li><a class="dropdown-item" href="shop.html?category=new">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="shop.html?category=bestsellers">Best Sellers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=floral">Floral</a></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=woody">Woody</a></li>
+                                <li><a class="dropdown-item" href="shop.html?fragrance=fresh">Fresh</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="store-locator.html">Stores</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Bar -->
+                    <div class="search-container me-3">
+                        <div class="position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search candles..." id="searchInput">
+                            <i class="bi bi-search search-icon"></i>
+                            <div class="search-suggestions" id="searchSuggestions"></div>
+                        </div>
+                    </div>
+
+                    <!-- Header Icons -->
+                    <div class="header-icons">
+                        <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Account">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a href="#" class="header-icon" id="wishlistIcon" aria-label="Wishlist">
+                            <i class="bi bi-heart"></i>
+                            <span class="icon-badge" id="wishlistCount">0</span>
+                        </a>
+                        <a href="#" class="header-icon" id="cartIcon" aria-label="Shopping Cart">
+                            <i class="bi bi-bag"></i>
+                            <span class="icon-badge" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Carousel -->
+        <section class="hero-section">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="hero-slide" style="background-image: url('https://woodwick.yankeecandle.com/dw/image/v2/BFGF_PRD/on/demandware.static/-/Sites-homefragranceus-Library/default/dwac3f1ac7/WoodWick/2025%2005%20MAY/Banner-Slim/WW_051225_OpulentWoods-med-banner_Desktop.jpg?sw=2048&sfrm=jpg');">
+                            <div class="hero-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <h1 class="hero-title">Illuminate Your Space</h1>
+                                            <p class="hero-subtitle" style="color: white;">Discover our collection of premium handcrafted candles, made with natural soy wax and carefully curated fragrances.</p>
+                                            <a href="shop.html" class="btn btn-primary btn-lg">Shop Collection</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="hero-slide" style="background-image: url('https://luxefurniture.ca/cdn/shop/files/Phantom_Cherry_life_1050x700.jpg?v=1732336987');">
+                            <div class="hero-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <h1 class="hero-title">New Autumn Collection</h1>
+                                            <p class="hero-subtitle" style="color: white;">Warm, cozy scents that capture the essence of fall. Limited edition fragrances available now.</p>
+                                            <a href="shop.html?category=new" class="btn btn-primary btn-lg">Explore New Arrivals</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="hero-slide" style="background-image: url('https://dilei.it/wp-content/uploads/sites/3/2025/10/Woodwick-candele-autunno.jpeg');">
+                            <div class="hero-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <h1 class="hero-title">Sustainable Luxury</h1>
+                                            <p class="hero-subtitle" style="color: white;">Eco-friendly candles made with renewable soy wax and cotton wicks. Beautiful scents, conscious choices.</p>
+                                            <a href="about.html" class="btn btn-outline-primary btn-lg">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Collection Showcase Banner -->
+        <section class="collection-showcase">
+            <div class="collection-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img.freepik.com/premium-photo/gold-background-with-gold-background-free-download_1134661-11242.jpg?w=360');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="collection-content">
+                                <h2 class="collection-title">New Opulent Woods Collection</h2>
+                                <p class="collection-subtitle">Discover grounding fragrances of textured woods and exotic spices.</p>
+                                <a href="shop.html?fragrance=woody" class="btn btn-light btn-lg">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rewards Program Banner -->
+        <section class="rewards-banner">
+            <div class="rewards-content" style="background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=400&fit=crop');">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 text-center mx-auto">
+                            <div class="rewards-logo mb-3">
+                                <div class="rewards-icon">
+                                    <i class="bi bi-award-fill"></i>
+                                </div>
+                                <h3 class="rewards-program-name">FRAGRANCE FAMILY REWARDS</h3>
+                            </div>
+                            <h2 class="rewards-title">Join Our Rewards Program</h2>
+                            <p class="rewards-description">Get 10% back in rewards, early access to sales, and a free birthday gift. Don't miss out!</p>
+                            <a href="#" class="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#rewardsModal">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dual Product Showcase -->
+        <section class="dual-showcase py-5">
+            <div class="container-fluid px-0">
+                <div class="row g-0">
+                    <div class="col-lg-6">
+                        <div class="showcase-item" style="background-image: url('https://yankeecandle.imgix.net/facb0b62-21b0-3027-b1f4-fe5efef6f29e/facb0b62-21b0-3027-b1f4-fe5efef6f29e.jpg?auto=format,compress&w=2084');">
+                            <div class="showcase-overlay"></div>
+                            <div class="showcase-content">
+                                <div class="showcase-product">
+                                    <img src="https://yankeecandle.imgix.net/facb0b62-21b0-3027-b1f4-fe5efef6f29e/facb0b62-21b0-3027-b1f4-fe5efef6f29e.jpg?auto=format,compress&w=2084" alt="Cedarwood Collection" class="product-image">
+                                </div>
+                                <div class="showcase-text">
+                                    <h3 class="showcase-title">Two New Scents From ReNew</h3>
+                                    <p class="showcase-description">Introducing Yuzu & Vetiver and Cedarwood & Ocean Moss, made with bio-based ingredients and essential oils.</p>
+                                    <a href="shop.html?category=new" class="btn btn-light">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="showcase-item" style="background-image: url('https://media.kohlsimg.com/is/image/kohls/3750309_ALT?wid=400&hei=400&op_sharpen=1');">
+                            <div class="showcase-overlay"></div>
+                            <div class="showcase-content">
+                                <div class="showcase-product">
+                                    <img src="https://media.kohlsimg.com/is/image/kohls/3750309_ALT?wid=400&hei=400&op_sharpen=1" alt="Floral Collection" class="product-image">
+                                </div>
+                                <div class="showcase-text">
+                                    <h3 class="showcase-title">Seasonal Florals</h3>
+                                    <p class="showcase-description">Delicate blooms and fresh petals captured in our limited edition spring collection.</p>
+                                    <a href="shop.html?fragrance=floral" class="btn btn-light">Discover</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Tiles -->
+        <section class="feature-tiles py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-tile">
+                            <div class="feature-image">
+                                <img src="https://candlesdirect.com/cdn/shop/files/PhantomCherryLS.jpg?v=1739442921&width=1000" alt="Best Sellers" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #EAC325;">Best Sellers</h3>
+                                <p>Our most loved fragrances</p>
+                                <a href="shop.html?category=bestsellers" class="btn btn-outline-primary">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-tile">
+                            <div class="feature-image">
+                                <img src="https://www.newellbrands.com/contentAsset/image/4956c38d-3393-48b6-a7e5-aba7ff4d6b8d/asset/crop_w/940/crop_h/800/resize_w/940/fp/0.5,0.5/quality_q/80/" alt="New Arrivals" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #EAC325;">New Arrivals</h3>
+                                <p>Fresh scents for every season</p>
+                                <a href="shop.html?category=new" class="btn btn-outline-primary">Discover</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-tile">
+                            <div class="feature-image">
+                                <img src="https://img.perfumerflavorist.com/files/base/allured/all/image/2025/04/Newell_Brands_WoodWick.67f51ba7a3635.png?auto=format&fill=solid&fit=fill&h=720&q=70&rect=0%2C12%2C1948%2C1096&w=1280" alt="Collections" class="img-fluid">
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: #EAC325;">Collections</h3>
+                                <p>Curated fragrance families</p>
+                                <a href="shop.html" class="btn btn-outline-primary">Browse All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotion Strip -->
+        <section class="promotion-strip">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="mb-0"><strong>Limited Time:</strong> Free shipping on all orders over $75 | Use code: FREESHIP75</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="section-title">Featured Products</h2>
+                        <p class="section-subtitle">Handpicked favorites from our collection</p>
+                    </div>
+                </div>
+                <div class="row" id="featuredProducts">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center mt-4">
+                        <a href="shop.html" class="btn btn-primary btn-lg">View All Products</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter-section py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2 class="section-title">Stay in the Glow</h2>
+                        <p class="section-subtitle mb-4">Subscribe to our newsletter for exclusive offers, new product launches, and candle care tips.</p>
+                        <form id="newsletterForm" class="newsletter-form">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email address" id="newsletterEmail" required>
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </div>
+                            <div class="form-text mt-2">We respect your privacy. Unsubscribe at any time.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="8" width="4" height="24" rx="2" fill="#F7F4F0"/>
+                            <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                            <text x="25" y="25" font-family="Playfair Display" font-size="18" font-weight="600" fill="#F7F4F0">Lumière</text>
+                        </svg>
+                        <p class="mt-3">Premium handcrafted candles made with natural soy wax and carefully curated fragrances to illuminate your space.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Candles</a></li>
+                        <li><a href="shop.html?category=new">New Arrivals</a></li>
+                        <li><a href="shop.html?category=bestsellers">Best Sellers</a></li>
+                        <li><a href="shop.html?fragrance=floral">Floral</a></li>
+                        <li><a href="shop.html?fragrance=woody">Woody</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="store-locator.html">Store Locator</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Connect</h5>
+                    <div class="social-links mb-3">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                    </div>
+                    <div class="country-selector">
+                        <select class="form-select form-select-sm">
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>United Kingdom</option>
+                            <option>Australia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">&copy; 2024 Lumière Candles. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h5>Shopping Cart</h5>
+            <button class="btn-close" id="closeCart" aria-label="Close cart"></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart text-center py-5">
+                <i class="bi bi-bag display-1 text-muted"></i>
+                <p class="mt-3">Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="d-flex justify-content-between">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <a href="cart.html" class="btn btn-outline-primary w-100 mb-2">View Cart</a>
+                <button class="btn btn-primary w-100" id="checkoutBtn" onclick="proceedToCheckout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="registerFirstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="registerLastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="terms-of-service.html">Terms of Service</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Success Modal -->
+    <div class="modal fade" id="newsletterSuccessModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center py-4">
+                    <i class="bi bi-check-circle-fill text-success display-4"></i>
+                    <h5 class="mt-3">Thank You!</h5>
+                    <p>You've successfully subscribed to our newsletter.</p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Quick View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="quickViewContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rewards Program Modal -->
+    <div class="modal fade" id="rewardsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Fragrance Family Rewards</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="rewards-modal-content">
+                        <div class="text-center mb-4">
+                            <div class="rewards-icon-large mb-3">
+                                <i class="bi bi-award-fill text-primary"></i>
+                            </div>
+                            <h3>Join Our Rewards Program</h3>
+                            <p class="lead">Earn points with every purchase and unlock exclusive benefits!</p>
+                        </div>
+                        
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4 text-center">
+                                <div class="reward-benefit">
+                                    <i class="bi bi-percent display-4 text-primary mb-2"></i>
+                                    <h5>10% Back in Rewards</h5>
+                                    <p>Earn 1 point for every $1 spent</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="reward-benefit">
+                                    <i class="bi bi-clock-history display-4 text-primary mb-2"></i>
+                                    <h5>Early Access</h5>
+                                    <p>Shop sales before everyone else</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="reward-benefit">
+                                    <i class="bi bi-gift display-4 text-primary mb-2"></i>
+                                    <h5>Birthday Gift</h5>
+                                    <p>Free candle on your special day</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rewards-tiers mb-4">
+                            <h5 class="mb-3">Membership Tiers</h5>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="tier-card">
+                                        <h6 class="tier-name">Spark</h6>
+                                        <p class="tier-requirement">$0 - $199</p>
+                                        <ul class="tier-benefits">
+                                            <li>5% back in rewards</li>
+                                            <li>Birthday gift</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="tier-card tier-featured">
+                                        <h6 class="tier-name">Glow</h6>
+                                        <p class="tier-requirement">$200 - $499</p>
+                                        <ul class="tier-benefits">
+                                            <li>10% back in rewards</li>
+                                            <li>Early access to sales</li>
+                                            <li>Free shipping</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="tier-card">
+                                        <h6 class="tier-name">Lumière</h6>
+                                        <p class="tier-requirement">$500+</p>
+                                        <ul class="tier-benefits">
+                                            <li>15% back in rewards</li>
+                                            <li>Exclusive products</li>
+                                            <li>Personal shopper</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Join Now - It's Free!</button>
+                            <p class="small text-muted mt-2">Already a member? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <!-- Chatbot Toggle Button -->
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="bi bi-chat-dots-fill"></i>
+            <span class="chatbot-notification" id="chatbot-notification">1</span>
+        </div>
+
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="chatbot-window">
+            <!-- Chatbot Header -->
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    <div class="chatbot-title">
+                        <h6>Lumière Assistant</h6>
+                        <span class="chatbot-status">Online</span>
+                    </div>
+                </div>
+                <div class="chatbot-header-actions">
+                    <button id="chatbot-minimize" class="chatbot-btn-icon" title="Minimize">
+                        <i class="bi bi-dash"></i>
+                    </button>
+                    <button id="chatbot-close" class="chatbot-btn-icon" title="Close">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chatbot Messages -->
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="chatbot-message bot-message">
+                    <div class="message-avatar">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>Hello! I'm your Lumière Assistant. I can help you find the perfect candles, answer questions about our products, or assist with your order. How can I help you today?</p>
+                        </div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="typing-indicator" class="typing-indicator" style="display: none;">
+                <div class="message-avatar">
+                    <i class="bi bi-robot"></i>
+                </div>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="chatbot-quick-actions">
+                <button class="quick-action-btn" data-message="What are your best selling candles?">
+                    <i class="bi bi-star"></i>
+                    Best Sellers
+                </button>
+                <button class="quick-action-btn" data-message="Tell me about your new arrivals">
+                    <i class="bi bi-sparkle"></i>
+                    New Arrivals
+                </button>
+                <button class="quick-action-btn" data-message="Help me find a candle by fragrance">
+                    <i class="bi bi-search"></i>
+                    Find Fragrance
+                </button>
+            </div>
+
+            <!-- Chatbot Input -->
+            <div class="chatbot-input-container">
+                <div class="chatbot-input-wrapper">
+                    <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Type your message..." maxlength="500">
+                    <button id="chatbot-send" class="chatbot-send-btn" disabled>
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </div>
+                <div class="chatbot-input-footer">
+                    <small class="text-muted">Powered by AI • <a href="#" class="chatbot-link">Privacy Policy</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

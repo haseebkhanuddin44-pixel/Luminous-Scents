@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Lumière Candles</title>
+    <meta name="description" content="Thank you for your order! Your premium handcrafted candles are on their way.">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        .confirmation-hero {
+            background: linear-gradient(135deg, #C9A464 0%, #B8935A 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .order-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .order-status {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #dee2e6;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #C9A464;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #dee2e6;
+        }
+        
+        .timeline-item.completed::before {
+            background: #28a745;
+            box-shadow: 0 0 0 3px #28a745;
+        }
+        
+        .order-item {
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #C9A464 0%, #B8935A 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #B8935A 0%, #A68450 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 164, 100, 0.3);
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-share {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            color: #6c757d;
+            transition: all 0.3s ease;
+            margin: 0.25rem;
+        }
+        
+        .share-btn:hover {
+            background: #f8f9fa;
+            color: #495057;
+            text-decoration: none;
+        }
+        
+        .estimated-delivery {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Comprehensive color improvements */
+        body {
+            background-color: #fafafa;
+            color: #2c1810;
+        }
+        
+        .main-content {
+            background-color: #fafafa;
+            min-height: 100vh;
+        }
+        
+        .order-card {
+            background: white;
+            color: #2c1810;
+        }
+        
+        .order-card h1, .order-card h2, .order-card h3, .order-card h4, .order-card h5, .order-card h6 {
+            color: #2c1810;
+        }
+        
+        .timeline-item h6 {
+            color: #2c1810;
+            font-weight: 600;
+        }
+        
+        .timeline-item small {
+            color: #6c757d;
+        }
+        
+        .order-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+        }
+        
+        .order-item h6 {
+            color: #2c1810;
+            font-weight: 600;
+        }
+        
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            color: #2c1810;
+        }
+        
+        .info-card h6 {
+            color: #2c1810;
+            font-weight: 600;
+        }
+        
+        .order-totals {
+            color: #2c1810;
+        }
+        
+        .order-totals .fw-bold, .order-totals .h5 {
+            color: #2c1810;
+        }
+        
+        .text-muted {
+            color: #6c757d !important;
+        }
+        
+        .small {
+            color: #6c757d;
+        }
+        
+        .fw-semibold, .fw-bold {
+            color: #2c1810;
+        }
+        
+        .social-share {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            color: #2c1810;
+        }
+        
+        .social-share h5 {
+            color: #2c1810;
+        }
+        
+        .share-btn {
+            color: #495057;
+            border-color: #dee2e6;
+        }
+        
+        .share-btn:hover {
+            background: #f8f9fa;
+            color: #2c1810;
+        }
+        
+        .estimated-delivery h5 {
+            color: #2c1810;
+        }
+        
+        .estimated-delivery .h4 {
+            color: #2c1810;
+        }
+        
+        .container {
+            background-color: transparent;
+        }
+        
+        .row {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="8" width="4" height="24" rx="2" fill="#6B3F26"/>
+                        <ellipse cx="12" cy="6" rx="3" ry="2" fill="#C9A464"/>
+                        <text x="25" y="25" font-family="Playfair Display" font-size="16" font-weight="600" fill="#2C1810">Lumière</text>
+                    </svg>
+                </a>
+
+                <!-- Order Status -->
+                <div class="d-none d-md-flex align-items-center">
+                    <div class="d-flex align-items-center">
+                        <span class="text-muted me-2">Cart</span>
+                        <i class="bi bi-chevron-right text-muted me-2"></i>
+                        <span class="text-muted me-2">Checkout</span>
+                        <i class="bi bi-chevron-right text-muted me-2"></i>
+                        <span class="fw-semibold text-success">Order Confirmed</span>
+                    </div>
+                </div>
+
+                <!-- Header Icons -->
+                <div class="header-icons">
+                    <a href="#" class="header-icon" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Account">
+                        <i class="bi bi-person"></i>
+                    </a>
+                    <a href="#" class="header-icon" id="wishlistIcon" aria-label="Wishlist">
+                        <i class="bi bi-heart"></i>
+                        <span class="icon-badge" id="wishlistCount">0</span>
+                    </a>
+                    <a href="#" class="header-icon" id="cartIcon" aria-label="Shopping Cart">
+                        <i class="bi bi-bag"></i>
+                        <span class="icon-badge" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Confirmation Hero -->
+    <section class="confirmation-hero">
+        <div class="container">
+            <div class="success-icon">
+                <i class="bi bi-check-lg" style="font-size: 2.5rem;"></i>
+            </div>
+            <h1 class="display-4 fw-bold mb-3">Order Confirmed!</h1>
+            <p class="lead mb-4">Thank you for your purchase. Your order has been successfully placed.</p>
+            <p class="mb-0">Order #<span id="orderNumber">Loading...</span></p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" style="background-color: #fafafa; min-height: 100vh; padding: 2rem 0;">
+        <div class="container">
+            <div class="order-card">
+                <div class="row">
+                    <!-- Order Details -->
+                    <div class="col-lg-8">
+                        <!-- Order Status -->
+                        <div class="order-status">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-check-circle me-2" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-0">Order Confirmed</h5>
+                                    <small>We've received your order and will process it shortly</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estimated Delivery -->
+                        <div class="estimated-delivery">
+                            <h5 class="mb-2">
+                                <i class="bi bi-truck me-2"></i>
+                                Estimated Delivery
+                            </h5>
+                            <p class="h4 mb-2" id="estimatedDelivery">Loading...</p>
+                            <small class="text-muted">We'll send you tracking information once your order ships</small>
+                        </div>
+
+                        <!-- Order Timeline -->
+                        <div class="mb-4">
+                            <h5 class="mb-3">Order Progress</h5>
+                            <div class="timeline">
+                                <div class="timeline-item completed">
+                                    <h6 class="mb-1">Order Placed</h6>
+                                    <small class="text-muted" id="orderDate">Just now</small>
+                                </div>
+                                <div class="timeline-item">
+                                    <h6 class="mb-1">Processing</h6>
+                                    <small class="text-muted">We're preparing your order</small>
+                                </div>
+                                <div class="timeline-item">
+                                    <h6 class="mb-1">Shipped</h6>
+                                    <small class="text-muted">Your order is on its way</small>
+                                </div>
+                                <div class="timeline-item">
+                                    <h6 class="mb-1">Delivered</h6>
+                                    <small class="text-muted">Enjoy your candles!</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Items -->
+                        <div class="mb-4">
+                            <h5 class="mb-3">Order Items</h5>
+                            <div id="orderItems">
+                                <!-- Items will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Shipping & Billing Info -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-card">
+                                    <h6 class="mb-3">
+                                        <i class="bi bi-truck me-2"></i>
+                                        Shipping Address
+                                    </h6>
+                                    <div id="shippingAddress">
+                                        <!-- Address will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-card">
+                                    <h6 class="mb-3">
+                                        <i class="bi bi-credit-card me-2"></i>
+                                        Payment Method
+                                    </h6>
+                                    <div id="paymentMethod">
+                                        <!-- Payment info will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="col-lg-4">
+                        <div class="info-card">
+                            <h5 class="mb-3">Order Summary</h5>
+                            <div class="order-totals">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotalAmount">$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2" id="discountRow" style="display: none !important;">
+                                    <span>Discount:</span>
+                                    <span class="text-success" id="discountAmount">-$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Shipping:</span>
+                                    <span id="shippingAmount">$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Tax:</span>
+                                    <span id="taxAmount">$0.00</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between fw-bold h5">
+                                    <span>Total:</span>
+                                    <span id="totalAmount">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="d-grid gap-2 mb-4">
+                            <button class="btn btn-primary-custom" onclick="window.print()">
+                                <i class="bi bi-printer me-2"></i>
+                                Print Receipt
+                            </button>
+                            <a href="shop.html" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>
+                                Continue Shopping
+                            </a>
+                        </div>
+
+                        <!-- Contact Support -->
+                        <div class="info-card text-center">
+                            <h6 class="mb-2">Need Help?</h6>
+                            <p class="small text-muted mb-3">Our customer service team is here to help</p>
+                            <div class="d-grid gap-2">
+                                <a href="mailto:support@lumierecandles.com" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-envelope me-2"></i>
+                                    Email Support
+                                </a>
+                                <a href="tel:1-800-LUMIERE" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-telephone me-2"></i>
+                                    Call Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Share -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="social-share">
+                        <h5 class="mb-3">Share Your Purchase</h5>
+                        <p class="text-muted mb-3">Let your friends know about your amazing candle selection!</p>
+                        <div>
+                            <a href="#" class="share-btn" onclick="shareOnFacebook()">
+                                <i class="bi bi-facebook"></i>
+                                Facebook
+                            </a>
+                            <a href="#" class="share-btn" onclick="shareOnTwitter()">
+                                <i class="bi bi-twitter"></i>
+                                Twitter
+                            </a>
+                            <a href="#" class="share-btn" onclick="shareOnInstagram()">
+                                <i class="bi bi-instagram"></i>
+                                Instagram
+                            </a>
+                            <a href="#" class="share-btn" onclick="copyOrderLink()">
+                                <i class="bi bi-link-45deg"></i>
+                                Copy Link
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h4 class="text-center mb-4">You Might Also Like</h4>
+                    <div class="row" id="recommendations">
+                        <!-- Recommendations will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Lumière Candles</h5>
+                    <p class="text-muted">Premium handcrafted candles made with natural soy wax and carefully curated fragrances.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Shop</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="shop.html" class="text-muted">All Candles</a></li>
+                        <li><a href="shop.html?category=new" class="text-muted">New Arrivals</a></li>
+                        <li><a href="shop.html?category=bestsellers" class="text-muted">Best Sellers</a></li>
+                        <li><a href="shop.html?category=gift-sets" class="text-muted">Gift Sets</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Contact Us</a></li>
+                        <li><a href="shipping-returns.html" class="text-muted">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-muted">Size Guide</a></li>
+                        <li><a href="#" class="text-muted">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-muted">About Us</a></li>
+                        <li><a href="store-locator.html" class="text-muted">Store Locator</a></li>
+                        <li><a href="#" class="text-muted">Careers</a></li>
+                        <li><a href="#" class="text-muted">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="privacy-policy.html" class="text-muted">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="text-muted">Terms of Service</a></li>
+                        <li><a href="accessibility.html" class="text-muted">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Lumière Candles. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=VISA" alt="Visa" class="me-2">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=MC" alt="Mastercard" class="me-2">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=AMEX" alt="American Express" class="me-2">
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=PP" alt="PayPal">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/order-confirmation.js"></script>
+</body>
+</html>
